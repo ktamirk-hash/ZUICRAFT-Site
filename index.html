@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZUIcraft — Экспериментальная инди-игра</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #1b2e1b;
+      color: #e0ffe0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Анимация блокового фона */
+    .block {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(50, 200, 50, 0.5);
+      animation: jump 3s infinite;
+      border-radius: 3px;
+    }
+
+    @keyframes jump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 40px 20px;
+      z-index: 10;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #7fff7f;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    header p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6em;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 35px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #fff;
+      background-color: #2ecc71;
+      border-radius: 12px;
+      transition: 0.3s;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+
+    .buttons a:hover {
+      background-color: #27ae60;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+      z-index: 10;
+      position: relative;
+    }
+
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #a3f5a3;
+      text-align: center;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    section p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+      text-align: center;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .gallery img {
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #1a3d1a;
+      color: #a3f5a3;
+      z-index: 10;
+      position: relative;
+    }
+
+    footer a {
+      color: #7fff7f;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.2em; }
+      .gallery img { width: 100%; }
+      .buttons a { width: 80%; padding: 12px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Генерация блоков -->
+  <script>
+    const numBlocks = 50;
+    for(let i=0; i<numBlocks; i++){
+      const block = document.createElement('div');
+      block.classList.add('block');
+      block.style.left = Math.random() * window.innerWidth + 'px';
+      block.style.top = Math.random() * window.innerHeight + 'px';
+      block.style.animationDuration = (2 + Math.random()*2) + 's';
+      block.style.backgroundColor = `rgba(${Math.floor(50+Math.random()*50)}, ${Math.floor(150+Math.random()*100)}, 50, ${0.3 + Math.random()*0.4})`;
+      document.body.appendChild(block);
+    }
+  </script>
+
+  <!-- Главная секция -->
+  <header>
+    <h1>ZUIcraft</h1>
+    <p>Экспериментальная инди-игра от ZUI, где блоки встречаются со скейтбордингом: строй рампы, выполняй трюки, добывай ресурсы и отбивайся от агрессивных обитателей — гопников. Игра находится в бета-тесте!</p>
+    <div class="buttons">
+      <a href="https://example.com/zuicraft_beta.zip" target="_blank">🎮 Скачать бета</a>
+      <a href="https://www.tiktok.com/@zuicraftgame" target="_blank">🎵 TikTok</a>
+      <a href="https://t.me/zuicraft" target="_blank">💬 Telegram</a>
+    </div>
+  </header>
+
+  <!-- О игре -->
+  <section>
+    <h2>О игре</h2>
+    <p>ZUIcraft — это мир, где вы сами создаете рампы и парки для скейтбординга, добываете ресурсы и сражаетесь с необычными противниками. Команда активно развивает механику и контент игры, чтобы сделать её ещё веселее и увлекательнее.</p>
+  </section>
+
+  <!-- Галерея / скриншоты -->
+  <section>
+    <h2>Галерея</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/250x150.png?text=Скриншот+1" alt="Скриншот 1">
+      <img src="https://via.placeholder.com/250x150.png?text=Скриншот+2" alt="Скриншот 2">
+      <img src="https://via.placeholder.com/250x150.png?text=Скриншот+3" alt="Скриншот 3">
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer>
+    © 2025 ZUI | Made with ❤️ by ZUI  
+    <br>
+    <a href="https://drive.google.com/file/d/15JxiLKXAO6ii_cHoAUJGJq-gioVMZlVL/view?usp=sharing" target="_blank">🎮 Скачать бета</a>
+    <a href="https://www.tiktok.com/@zui_craft?is_from_webapp=1&sender_device=pc" target="_blank">🎵 TikTok</a>
+    <a href="https://t.me/ZUISTUDIO" target="_blank">💬 Telegram</a>
+  </footer>
+
+</body>
+</html>
